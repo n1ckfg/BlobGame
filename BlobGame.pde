@@ -4,8 +4,6 @@
 //first try: min distance: 0.45   max distance: 13.0   BG Subtract: on   Tracking: off   min blob size: 297   distance threshold: 0.2   frame buffer: 5
 //second try: min distance: 0.45   max distance: 13.0   BG Subtract: on   Tracking: off   min blob size: 297   distance threshold: 0.2   frame buffer: 5
 
-import processing.opengl.*;
-
 boolean debug = false;
 
 //~~~~  real-world calibration  ~~~
@@ -35,7 +33,7 @@ color bgColorHell = color(90,0,0);
 color bgColorHeaven = color(0,127,187);
 color bgColorDebug = color(0,0,255);
 int fontSize = 14;
-PFont font = createFont("Arial",fontSize);
+PFont font;
 int pulsebgTarget = int(random(127));
 int pulsebgCurrent = pulsebgTarget;
 boolean kidMode = false;
@@ -45,7 +43,8 @@ boolean hellMode = true;
 boolean trackingPlayer = false;
 
 void setup(){
-  size(1600,600,OPENGL);
+  size(1600,600,P2D);
+  font = createFont("Arial",fontSize);
   textFont(font, fontSize);
   soundSetup();
   noCursor();
